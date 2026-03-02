@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+  }
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 4s ease infinite;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}
+
+/* ============ CLERK MODAL STYLING ============ */
+.cl-rootBox {
+  background: linear-gradient(to bottom right, rgb(15, 23, 42), rgb(30, 41, 59)) !important;
+  border: 1px solid rgba(71, 85, 105, 0.5) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 60px rgba(6, 182, 212, 0.2) !important;
+  max-width: 95vw !important;
+  max-height: 90vh !important;
+  padding: 2rem !important;
+}
+
+.cl-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.cl-headerTitle {
+  color: white !important;
+  font-size: 1.75rem !important;
+  font-weight: 900 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.cl-headerSubtitle {
+  color: rgb(203, 213, 225) !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.cl-main {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.cl-formFieldInput,
+.cl-input {
+  background-color: rgba(71, 85, 105, 0.5) !important;
+  border: 1px solid rgba(71, 85, 105, 0.5) !important;
+  border-radius: 0.75rem !important;
+  color: white !important;
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.cl-formFieldInput:focus,
+.cl-input:focus {
+  background-color: rgba(71, 85, 105, 0.8) !important;
+  border-color: rgb(6, 182, 212) !important;
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
+}
+
+.cl-formFieldInput::placeholder,
+.cl-input::placeholder {
+  color: rgb(148, 163, 184) !important;
+}
+
+.cl-buttonPrimary,
+.cl-signInButton {
+  background: linear-gradient(to right, rgb(6, 182, 212), rgb(59, 130, 246)) !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1.5rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 6px rgba(6, 182, 212, 0.3) !important;
+  width: 100% !important;
+}
+
+.cl-buttonPrimary:hover,
+.cl-signInButton:hover {
+  box-shadow: 0 8px 12px rgba(6, 182, 212, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.cl-buttonSecondary {
+  background-color: rgba(71, 85, 105, 0.3) !important;
+  border: 1px solid rgba(71, 85, 105, 0.5) !important;
+  border-radius: 0.75rem !important;
+  color: rgb(226, 232, 240) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1.5rem !important;
+  transition: all 0.2s ease !important;
+  width: 100% !important;
+}
+
+.cl-buttonSecondary:hover {
+  background-color: rgba(71, 85, 105, 0.5) !important;
+  border-color: rgba(71, 85, 105, 0.7) !important;
+}
+
+.cl-socialButtonIcon {
+  filter: brightness(1.1) !important;
+}
+
+.cl-dividerLine {
+  background-color: rgba(71, 85, 105, 0.5) !important;
+}
+
+.cl-dividerText {
+  color: rgb(148, 163, 184) !important;
+  font-size: 0.85rem !important;
+}
+
+.cl-footer__actionLink {
+  color: rgb(6, 182, 212) !important;
+  font-weight: 600 !important;
+}
+
+.cl-footer__actionLink:hover {
+  color: rgb(34, 211, 238) !important;
+}
+
+/* Modal overlay */
+.cl-modalOverlay,
+[role="dialog"] {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .cl-rootBox {
+    padding: 1.5rem !important;
+    max-width: 100vw !important;
+    border-radius: 0.75rem !important;
+  }
+
+  .cl-headerTitle {
+    font-size: 1.5rem !important;
+  }
+
+  .cl-buttonPrimary,
+  .cl-buttonSecondary {
+    padding: 0.625rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .cl-formFieldInput,
+  .cl-input {
+    font-size: 16px !important;
+    padding: 0.625rem 0.875rem !important;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);}
